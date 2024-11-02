@@ -42,12 +42,12 @@ side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "carryon"
 mandatory = false
-versionRange = "[1.20.1.2.1.2.7,)"
+versionRange = "[2.1.2.7,)"
 ordering = "BEFORE"
 side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "playeranimator"
 mandatory = false
-versionRange = "[1.0.2,)"
+versionRange = "[1.0.2-rc1+1.20,)"
 ordering = "BEFORE"
 side = "CLIENT"
