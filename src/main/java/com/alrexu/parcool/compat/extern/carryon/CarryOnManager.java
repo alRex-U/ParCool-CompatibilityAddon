@@ -4,7 +4,7 @@ import com.alrexu.parcool.compat.extern.IModManager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
-import tschipp.carryon.common.handler.RegistrationHandler;
+import tschipp.carryon.common.carry.CarryOnDataManager;
 
 public class CarryOnManager implements IModManager {
     private static boolean installed = false;
@@ -20,9 +20,7 @@ public class CarryOnManager implements IModManager {
 
     public static boolean isCarrying(Player player) {
         if (!installed) return false;
-        var stack = player.getMainHandItem();
-        var item = stack.getItem();
-        return !stack.isEmpty() && (item == RegistrationHandler.itemTile || item == RegistrationHandler.itemEntity);
+        return CarryOnDataManager.getCarryData(player).isCarrying();
     }
 
     @Override
