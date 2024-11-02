@@ -45,3 +45,15 @@ mandatory = false
 versionRange = "1.19.2.2.1.2.23"
 ordering = "BEFORE"
 side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "carryon"
+mandatory = false
+versionRange = "[1.17.2.15,)"
+ordering = "BEFORE"
+side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "playeranimator"
+mandatory = false
+versionRange = "[1.0.2-rc1+1.20,)"
+ordering = "BEFORE"
+side = "CLIENT"
