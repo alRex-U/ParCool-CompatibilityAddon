@@ -1,0 +1,41 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "[36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license = "All rights reserved"
+[[mods]] #mandatory
+modId = "parcool_compat_addon" #mandatory
+version = "${file.jarVersion}" #mandatory
+displayName = "ParCool+ / Compatibility Addon" #mandatory
+#logoFile="../logo.png" #optional
+description = '''
+An addon for ParCool, which support compatibility of animation with some mods
+'''
+[[dependencies.parcool_compat_addon]] #optional
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[39,)" #mandatory
+ordering = "NONE"
+side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,1.19)"
+ordering = "NONE"
+side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "parcool"
+mandatory = true
+versionRange = "[3.3.0.2,)"
+ordering = "BEFORE"
+side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "tacz"
+mandatory = false
+versionRange = "[1.0.2,)"
+ordering = "BEFORE"
+side = "CLIENT"
+[[dependencies.parcool_compat_addon]]
+modId = "bettercombat"
+mandatory = false
+versionRange = "[1.6.2+1.18.2,)"
+ordering = "BEFORE"
+side = "CLIENT"
