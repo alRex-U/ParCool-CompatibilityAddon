@@ -54,6 +54,6 @@ side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "playeranimator"
 mandatory = false
-versionRange = "[1.0.2-rc1+1.20,)"
+versionRange = "[1.0.2+1.18,)"
 ordering = "BEFORE"
 side = "CLIENT"
