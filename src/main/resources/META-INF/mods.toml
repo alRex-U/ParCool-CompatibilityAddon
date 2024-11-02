@@ -18,7 +18,7 @@ side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,1.20)"
+versionRange = "[1.20.1,1.21)"
 ordering = "NONE"
 side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
@@ -36,12 +36,12 @@ side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "bettercombat"
 mandatory = false
-versionRange = "[1.7.1+1.19,)"
+versionRange = "[1.8.6+1.20.1,)"
 ordering = "BEFORE"
 side = "CLIENT"
 [[dependencies.parcool_compat_addon]]
 modId = "carryon"
 mandatory = false
-versionRange = "1.19.2.2.1.2.23"
+versionRange = "[1.20.1.2.1.2.7,)"
 ordering = "BEFORE"
 side = "CLIENT"
