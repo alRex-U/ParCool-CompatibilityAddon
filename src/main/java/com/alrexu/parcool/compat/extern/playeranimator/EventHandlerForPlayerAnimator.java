@@ -5,9 +5,12 @@ import com.alrex.parcool.client.animation.impl.CrawlAnimator;
 import com.alrex.parcool.client.animation.impl.FastRunningAnimator;
 import com.alrex.parcool.client.animation.impl.FastSwimAnimator;
 import dev.kosmx.playerAnim.api.IPlayer;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class EventHandlerForPlayerAnimator {
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void onUpdateParCoolAnimInfo(ParCoolAnimationInfoEvent event) {
         var player = event.getPlayer();
