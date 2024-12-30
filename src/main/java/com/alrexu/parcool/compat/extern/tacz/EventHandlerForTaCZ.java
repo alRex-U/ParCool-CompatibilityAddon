@@ -4,9 +4,12 @@ import com.alrex.parcool.api.unstable.animation.AnimationPart;
 import com.alrex.parcool.api.unstable.animation.ParCoolAnimationInfoEvent;
 import com.alrex.parcool.client.animation.impl.*;
 import com.tacz.guns.api.item.gun.AbstractGunItem;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class EventHandlerForTaCZ {
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void onUpdateParCoolAnimInfo(ParCoolAnimationInfoEvent event) {
         if (event.getPlayer().getMainHandItem().getItem() instanceof AbstractGunItem) {
