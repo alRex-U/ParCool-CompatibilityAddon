@@ -5,7 +5,7 @@ import com.alrex.parcool.api.unstable.animation.ParCoolAnimationInfoEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import tictim.paraglider.item.ParagliderItem;
+import tictim.paraglider.contents.item.ParagliderItem;
 
 public class EventHandlerForParaglider {
     @OnlyIn(Dist.CLIENT)
