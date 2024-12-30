@@ -85,8 +85,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:ClothConfig-348521:${ClothConfig_file_id}")
     runtimeOnly fg.deobf("curse.maven:CarryOn-274259:${CarryOn_file_id}")
     compileOnly fg.deobf("curse.maven:CarryOn-274259:${CarryOn_file_id}")
-    runtimeOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
-    compileOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
+    //runtimeOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
+    //compileOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
