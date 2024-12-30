@@ -14,40 +14,46 @@ modId = "forge" #mandatory
 mandatory = true #mandatory
 versionRange = "[39,)" #mandatory
 ordering = "NONE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.18.2,1.19)"
 ordering = "NONE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "parcool"
 mandatory = true
 versionRange = "[3.3.0.2,)"
 ordering = "BEFORE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "tacz"
 mandatory = false
 versionRange = "[1.0.2,)"
 ordering = "BEFORE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "bettercombat"
 mandatory = false
 versionRange = "[1.6.2+1.18.2,)"
 ordering = "BEFORE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "carryon"
 mandatory = false
 versionRange = "[1.17.2.15,)"
 ordering = "BEFORE"
-side = "CLIENT"
+side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "playeranimator"
 mandatory = false
 versionRange = "[1.0.2+1.18,)"
 ordering = "BEFORE"
-side = "CLIENT"
+side = "BOTH"
+[[dependencies.parcool_compat_addon]]
+modId = "paraglider"
+mandatory = false
+versionRange = "[1.6.0.6,)"
+ordering = "BEFORE"
+side = "BOTH"
