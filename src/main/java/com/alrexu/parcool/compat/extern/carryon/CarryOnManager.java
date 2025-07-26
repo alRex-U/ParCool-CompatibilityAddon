@@ -3,14 +3,12 @@ package com.alrexu.parcool.compat.extern.carryon;
 import com.alrexu.parcool.compat.extern.ModManager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
 import tschipp.carryon.common.handler.RegistrationHandler;
 
 public class CarryOnManager extends ModManager {
 
     @Override
     public void initWhenInstalled(IEventBus modBus, IEventBus forgeBus) {
-        var modFile = ModList.get().getModFileById(getModID());
         forgeBus.register(EventHandlerForCarryOn.class);
     }
 
