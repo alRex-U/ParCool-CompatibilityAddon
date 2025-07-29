@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "parcool"
 mandatory = true
-versionRange = "[3.3.0.2,)"
+versionRange = "[3.4.1.1,)"
 ordering = "BEFORE"
 side = "BOTH"
 [[dependencies.parcool_compat_addon]]
@@ -55,5 +55,11 @@ side = "BOTH"
 modId = "paraglider"
 mandatory = false
 versionRange = "[1.7.0.5,)"
+ordering = "BEFORE"
+side = "BOTH"
+[[dependencies.parcool_compat_addon]]
+modId = "pointblank"
+mandatory = false
+versionRange = "[1.9.6,)"
 ordering = "BEFORE"
 side = "BOTH"
