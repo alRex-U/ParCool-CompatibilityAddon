@@ -4,6 +4,7 @@ import com.alrexu.parcool.compat.extern.bettercombat.BetterCombatManager;
 import com.alrexu.parcool.compat.extern.carryon.CarryOnManager;
 import com.alrexu.parcool.compat.extern.paraglider.ParagliderManager;
 import com.alrexu.parcool.compat.extern.playeranimator.PlayerAnimatorManager;
+import com.alrexu.parcool.compat.extern.realcamera.RealCameraManager;
 import com.alrexu.parcool.compat.extern.tacz.TaCZManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,7 +18,8 @@ public class ExternalModManager {
             new TaCZManager(),
             new PlayerAnimatorManager(),
             new CarryOnManager(),
-            new ParagliderManager()
+            new ParagliderManager(),
+            new RealCameraManager()
     );
 
     public static void init(IEventBus modBus, IEventBus forgeBus) {
