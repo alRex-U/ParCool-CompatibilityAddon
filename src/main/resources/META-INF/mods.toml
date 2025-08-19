@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "parcool"
 mandatory = true
-versionRange = "[3.4.1.1,)"
+versionRange = "[3.4.1.4,)"
 ordering = "BEFORE"
 side = "BOTH"
 [[dependencies.parcool_compat_addon]]
@@ -63,3 +63,9 @@ mandatory = false
 versionRange = "[1.9.6,)"
 ordering = "BEFORE"
 side = "BOTH"
+[[dependencies.parcool_compat_addon]]
+modId = "realcamera"
+mandatory = false
+versionRange = "[0.5.3,)"
+ordering = "BEFORE"
+side = "CLIENT"

@@ -94,7 +94,8 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:Vics_Point_Blank-961053:${VicsPointBlank_file_id}")
     compileOnly fg.deobf("curse.maven:Vics_Point_Blank-961053:${VicsPointBlank_file_id}")
     runtimeOnly fg.deobf("curse.maven:GeckoLib-388172:${GeckoLib_file_id}")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    runtimeOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
+    compileOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
