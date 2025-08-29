@@ -70,9 +70,20 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven { url = 'https://www.cursemaven.com' }
+
+    exclusiveContent {
+        forRepository {
+            maven { url = "https://api.modrinth.com/maven" }
+        }
+        forRepositories(fg.repository)
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
+
     runtimeOnly fg.deobf("curse.maven:parcool-482378:${parcool_file_id}")
     compileOnly fg.deobf("curse.maven:parcool-482378:${parcool_file_id}")
     runtimeOnly fg.deobf("curse.maven:Timeless_and_Classics_Zero-1028108:${TaCZ_file_id}")
@@ -89,6 +100,9 @@ dependencies {
     compileOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
     runtimeOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
     compileOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
+
+    // runtimeOnly fg.deobf("maven.modrinth:first-person-model:${FirstPersonModel_file_id}")
+    compileOnly fg.deobf("maven.modrinth:first-person-model:${FirstPersonModel_file_id}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -103,7 +117,7 @@ jar {
                 "Implementation-Vendor"   : author,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 "TweakClass"              : "org.spongepowered.asm.launch.MixinTweaker",
-                "MixinConfigs"            : "parcool.mixins.json"
+                "MixinConfigs": "parcool_compat_addon.mixins.json"
         ])
     }
 }

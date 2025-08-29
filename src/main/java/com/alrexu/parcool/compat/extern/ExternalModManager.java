@@ -2,6 +2,7 @@ package com.alrexu.parcool.compat.extern;
 
 import com.alrexu.parcool.compat.extern.bettercombat.BetterCombatManager;
 import com.alrexu.parcool.compat.extern.carryon.CarryOnManager;
+import com.alrexu.parcool.compat.extern.firstpersonmodel.FirstPersonModelManager;
 import com.alrexu.parcool.compat.extern.paraglider.ParagliderManager;
 import com.alrexu.parcool.compat.extern.playeranimator.PlayerAnimatorManager;
 import com.alrexu.parcool.compat.extern.realcamera.RealCameraManager;
@@ -19,7 +20,8 @@ public class ExternalModManager {
             new PlayerAnimatorManager(),
             new CarryOnManager(),
             new ParagliderManager(),
-            new RealCameraManager()
+            new RealCameraManager(),
+            new FirstPersonModelManager()
     );
 
     public static void init(IEventBus modBus, IEventBus forgeBus) {
