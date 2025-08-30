@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.parcool_compat_addon]]
 modId = "parcool"
 mandatory = true
-versionRange = "[3.4.1.4,)"
+versionRange = "[3.4.1.5,)"
 ordering = "BEFORE"
 side = "BOTH"
 [[dependencies.parcool_compat_addon]]
