@@ -7,7 +7,13 @@ public class BetterCombatManager extends ModManager {
 
     @Override
     public void initWhenInstalled(IEventBus modBus, IEventBus forgeBus) {
-        forgeBus.register(EventHandlerForBetterCombat.class);
+    }
+
+    @Override
+    public void initInClient(IEventBus modBus, IEventBus forgeBus) {
+        if (isInstalled()) {
+            forgeBus.register(EventHandlerForBetterCombat.class);
+        }
     }
 
     @Override
