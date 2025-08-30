@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(ParCoolCompatAddon.MOD_ID)
 public class ParCoolCompatAddon {
     public static final String MOD_ID = "parcool_compat_addon";
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public ParCoolCompatAddon() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
