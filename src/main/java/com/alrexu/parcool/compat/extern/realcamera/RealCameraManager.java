@@ -12,13 +12,6 @@ public class RealCameraManager extends ModManager {
     }
 
     @Override
-    public void initInClient(IEventBus modBus, IEventBus forgeBus) {
-        if (isInstalled()) {
-            forgeBus.register(EventHandlerForRealCamera.class);
-        }
-    }
-
-    @Override
     public String getModID() {
         return "realcamera";
     }
