@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(Animation.class)
+@Mixin(value = Animation.class, remap = false)
 public class AnimationMixin {
     @Inject(method = "shouldCancelAnimation", at = @At("HEAD"), cancellable = true)
     public void onShouldCancelAnimation(Player player, CallbackInfoReturnable<Boolean> cir) {
