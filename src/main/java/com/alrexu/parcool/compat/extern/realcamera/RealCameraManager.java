@@ -1,7 +1,9 @@
 package com.alrexu.parcool.compat.extern.realcamera;
 
-import com.alrex.parcool.config.ParCoolConfig;
 import com.alrexu.parcool.compat.extern.ModManager;
+import com.xtracr.realcamera.RealCameraCore;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class RealCameraManager extends ModManager {
@@ -12,7 +14,6 @@ public class RealCameraManager extends ModManager {
     @Override
     public void initInClient(IEventBus modBus, IEventBus forgeBus) {
         if (isInstalled()) {
-            ParCoolConfig.Client.Booleans.EnableFPVAnimation.set(true);
             forgeBus.register(EventHandlerForRealCamera.class);
         }
     }
@@ -20,5 +21,10 @@ public class RealCameraManager extends ModManager {
     @Override
     public String getModID() {
         return "realcamera";
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public boolean isRealCameraActive() {
+        return isInstalled() && RealCameraCore.isActive();
     }
 }

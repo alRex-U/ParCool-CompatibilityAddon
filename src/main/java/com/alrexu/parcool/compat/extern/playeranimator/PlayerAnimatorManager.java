@@ -7,7 +7,13 @@ public class PlayerAnimatorManager extends ModManager {
 
     @Override
     public void initWhenInstalled(IEventBus modBus, IEventBus forgeBus) {
-        forgeBus.register(EventHandlerForPlayerAnimator.class);
+    }
+
+    @Override
+    public void initInClient(IEventBus modBus, IEventBus forgeBus) {
+        if (isInstalled()) {
+            forgeBus.register(EventHandlerForPlayerAnimator.class);
+        }
     }
 
     @Override
