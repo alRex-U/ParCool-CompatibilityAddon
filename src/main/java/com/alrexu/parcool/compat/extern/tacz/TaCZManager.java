@@ -11,7 +11,9 @@ public class TaCZManager extends ModManager {
 
     @Override
     public void initInClient(IEventBus modBus, IEventBus forgeBus) {
-        forgeBus.register(EventHandlerForTaCZ.class);
+        if (isInstalled()) {
+            forgeBus.register(EventHandlerForTaCZ.class);
+        }
     }
 
     @Override
