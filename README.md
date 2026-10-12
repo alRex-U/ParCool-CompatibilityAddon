@@ -7,6 +7,7 @@ mod.
 
 ## Supported Mods
 
+- Player Animator
 - Better Combat
   - fix animation issues
 - Carry On
@@ -15,8 +16,6 @@ mod.
   - enable FPV animation of ParCool automatically while First Person Model is active
 - Paraglider
   - fix animation issues
-- Player Animator
-  - prioritize its animation than some ones of ParCool
 - RealCamera
   - adjust camera and animations to make its view naturally
 - Timeless and Classics Zero
