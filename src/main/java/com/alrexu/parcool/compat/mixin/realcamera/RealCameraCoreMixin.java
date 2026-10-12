@@ -1,8 +1,7 @@
 package com.alrexu.parcool.compat.mixin.realcamera;
 
-import com.alrex.parcool.common.action.impl.FastRun;
-import com.alrex.parcool.common.action.impl.Slide;
-import com.alrex.parcool.common.capability.Parkourability;
+import com.alrex.parcool.common.Parkourability;
+import com.alrex.parcool.common.action.ParCoolActions;
 import com.xtracr.realcamera.RealCameraCore;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.phys.Vec3;
@@ -32,14 +31,14 @@ public class RealCameraCoreMixin {
         if (player == null) return;
         var parkourability = Parkourability.get(player);
         if (parkourability == null) return;
-        if (parkourability.get(Slide.class).isDoing()) {
+        if (parkourability.get(ParCoolActions.SLIDE).isDoing()) {
             pitch = player.getViewXRot(tickDelta);
             roll = 0;
             yaw = player.getViewYRot(tickDelta);
             pos = pos.add(0, 0.2, 0);
             return;
         }
-        if (parkourability.get(FastRun.class).isDoing()) {
+        if (parkourability.get(ParCoolActions.FAST_RUN).isDoing()) {
             roll = 0;
             pos.add(player.getLookAngle().normalize());
         }

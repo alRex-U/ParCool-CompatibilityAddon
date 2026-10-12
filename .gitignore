@@ -20,6 +20,9 @@ build
 # other
 eclipse
 run
+src/generated
+.env
 
 # Files from Forge MDK
 forge*changelog.txt
+/src/generated/resources/META-INF/mods.toml

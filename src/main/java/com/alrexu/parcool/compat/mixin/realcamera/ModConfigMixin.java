@@ -1,9 +1,7 @@
 package com.alrexu.parcool.compat.mixin.realcamera;
 
-import com.alrex.parcool.common.action.impl.Dive;
-import com.alrex.parcool.common.action.impl.FastRun;
-import com.alrex.parcool.common.action.impl.Slide;
-import com.alrex.parcool.common.capability.Parkourability;
+import com.alrex.parcool.common.Parkourability;
+import com.alrex.parcool.common.action.ParCoolActions;
 import com.xtracr.realcamera.config.ConfigFile;
 import com.xtracr.realcamera.config.ModConfig;
 import net.minecraft.client.Minecraft;
@@ -23,14 +21,14 @@ public class ModConfigMixin {
         if (parkourability == null) return;
 
         if (modelPartName.equals("head")) {
-            if (parkourability.get(FastRun.class).isDoing()
-                    || parkourability.get(Slide.class).isDoing()
-                    || parkourability.get(Dive.class).isDoing()
+            if (parkourability.get(ParCoolActions.FAST_RUN).isDoing()
+                    || parkourability.get(ParCoolActions.SLIDE).isDoing()
+                    || parkourability.get(ParCoolActions.DIVE).isDoing()
             ) {
                 cir.setReturnValue(true);
             }
         } else {
-            if (parkourability.get(Dive.class).isDoing()) {
+            if (parkourability.get(ParCoolActions.DIVE).isDoing()) {
                 cir.setReturnValue(true);
             }
         }

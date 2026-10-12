@@ -1,3 +1,5 @@
+import me.modmuss50.mpp.ReleaseType
+
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
@@ -8,22 +10,32 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2]'
+    id 'org.spongepowered.mixin' version '0.7.+'
+    id "co.uzzu.dotenv.gradle" version '4.+'
+    id 'me.modmuss50.mod-publish-plugin' version '1.+'
+}
+
+compileJava.options.encoding("UTF-8")
+compileTestJava.options.encoding("UTF-8")
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+
+var mod_reference_version = "${parcool_version}-${mod_version}"
+version = "${minecraft_version}-${parcool_version}-${mod_version}"
+archivesBaseName = 'ParCool-CompatibilityAddon'
 
 mixin {
     add sourceSets.main, 'parcool_compat_addon.refmap.json'
     config 'parcool_compat_addon.mixins.json'
 }
 
-version = "${minecraft_version}-${parcool_version}-${mod_version}"
-archivesBaseName = 'ParCool-CompatibilityAddon'
-
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
     mappings channel: 'official', version: minecraft_version
 
@@ -66,8 +78,6 @@ minecraft {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
 repositories {
     maven { url = 'https://www.cursemaven.com' }
 
@@ -81,8 +91,9 @@ repositories {
         }
     }
 }
+
 dependencies {
-    minecraft "net.minecraftforge:forge:${forge_version}"
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     runtimeOnly fg.deobf("curse.maven:parcool-482378:${parcool_file_id}")
     compileOnly fg.deobf("curse.maven:parcool-482378:${parcool_file_id}")
@@ -100,12 +111,71 @@ dependencies {
     compileOnly fg.deobf("curse.maven:Paraglider-289240:${Paraglider_file_id}")
     runtimeOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
     compileOnly fg.deobf("curse.maven:RealCamera-851574:${RealCamera_file_id}")
-
-    // runtimeOnly fg.deobf("maven.modrinth:first-person-model:${FirstPersonModel_file_id}")
+    //runtimeOnly fg.deobf("maven.modrinth:first-person-model:${FirstPersonModel_file_id}")
     compileOnly fg.deobf("maven.modrinth:first-person-model:${FirstPersonModel_file_id}")
 }
+tasks.register("generateModMetadata", ProcessResources) {
+    var properties = [
+            minecraft: [
+                    version      : minecraft_version,
+                    version_range: minecraft_version_range
+            ],
+            loader   : [
+                    version_range: loader_version_range
+            ],
+            forge    : [
+                    version      : forge_version,
+                    version_range: forge_version_range
+            ],
+            mod      : [
+                    id     : mod_id,
+                    name   : 'ParCool+ / Compatibility Addon',
+                    license: 'Lesser General Public License version 3',
+                    version: mod_reference_version,
+                    authors: 'alRex_U'
+            ],
+            parcool  : [
+                    version      : parcool_version,
+                    version_range: parcool_version_range
+            ],
+            extern   : [
+                    tacz          : [
+                            version_range: TaCZ_version_range
+                    ],
+                    bettercombat  : [
+                            version_range: BetterCombat_version_range
+                    ],
+                    carryon       : [
+                            version_range: CarryOn_version_range
+                    ],
+                    playeranimator: [
+                            version_range: playerAnimator_version_range
+                    ],
+                    paragliders   : [
+                            version_range: Paraglider_version_range
+                    ],
+                    realcamera    : [
+                            version_range: RealCamera_version_range
+                    ],
+                    firstperson   : [
+                            version_range: FirstPersonModel_version_range
+                    ]
+            ]
+    ]
+    inputs.properties properties
+    expand properties
+    with copySpec {
+        from("src/template/resources-processed") {
+            include 'META-INF/mods.toml'
+        }
+    }
+    into "src/generated/resources"
+}
 
-// Example for how to get properties into the manifest for reading by the runtime..
+sourceSets.main.resources {
+    srcDir tasks.named("generateModMetadata")
+}
+
 jar {
     manifest {
         attributes([
@@ -120,19 +190,47 @@ jar {
                 "MixinConfigs": "parcool_compat_addon.mixins.json"
         ])
     }
+    finalizedBy('reobfJar')
 }
 
-jar.finalizedBy('reobfJar')
+publishMods {
+    type = ReleaseType.of(release_type)
+    file = jar.archiveFile
+    var changelogText = project.layout.projectDirectory.file("changelog/v_${mod_reference_version}.md").asFile.getText()
+    changelog = changelogText
+    modLoaders.add('forge')
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
+    displayName = version
+    version = "${minecraft_version}-${parcool_version}-${mod_version}"
+
+    curseforge {
+        projectId = '1132901'
+        accessToken = env.fetch("API_TOKEN_PARCOOL_COMPAT_CURSEFORGE")
+        minecraftVersions.add(minecraft_version)
+        projectSlug = 'parcool-compatibility-addon'
+
+        clientRequired = true
+        serverRequired = true
+
+        requires('parcool')
     }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+}
+
+tasks.register("addGitTagForRelease") {
+    group = 'publishing'
+    mustRunAfter 'publishMods'
+    doLast {
+        var tagName = "v${mod_reference_version}/${minecraft_version}"
+        var result = exec {
+            executable 'git'
+            args(['tag', '-a', "\"${tagName}\"", '-m', "Release:${minecraft_version}-${mod_version}/state:${release_type}"])
         }
+        result.assertNormalExitValue()
+        println "Tag:[${tagName}] is applied to current commit"
     }
+}
+
+tasks.register("releaseModVersion") {
+    group = 'publishing'
+    dependsOn('publishMods', 'addGitTagForRelease')
 }
